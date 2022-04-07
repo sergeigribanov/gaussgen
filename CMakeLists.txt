@@ -15,6 +15,9 @@ list(APPEND CMAKE_PREFIX_PATH $ENV{ROOTSYS})
 find_package(ROOT REQUIRED COMPONENTS RIO Net Core)
 include(${ROOT_USE_FILE})
 
+configure_file(${CMAKE_CURRENT_SOURCE_DIR}/env-gaussgen.sh.in env-gaussgen.sh)
+configure_file(${CMAKE_CURRENT_SOURCE_DIR}/rootlogon.C.in rootlogon.C)
+
 include(GNUInstallDirs)
 add_subdirectory(library)
 add_subdirectory(test)
@@ -37,3 +40,5 @@ install(EXPORT gaussgenTargets DESTINATION lib/cmake)
 install(FILES
   ${CMAKE_CURRENT_BINARY_DIR}/gaussgenConfig.cmake
   DESTINATION lib/cmake)
+install(FILES ${PROJECT_BINARY_DIR}/env-gaussgen.sh DESTINATION bin)
+install(FILES ${PROJECT_BINARY_DIR}/rootlogon.C DESTINATION share/gaussgen)

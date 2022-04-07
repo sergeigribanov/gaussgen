@@ -1,0 +1,6 @@
+{
+  gSystem->AddIncludePath("-I@EIGEN3_INCLUDE_DIR@");
+  gSystem->AddIncludePath("-I@CMAKE_INSTALL_PREFIX@/include");
+  gSystem->AddDynamicPath("@CMAKE_INSTALL_PREFIX@/lib");
+  gSystem->Load("libgaussgen");
+}
